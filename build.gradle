@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "ru.dfhub"
-version = "1.0"
+version = "1.1"
 
 publishing {
     publications {
@@ -12,7 +12,7 @@ publishing {
             from components.java
             groupId = 'ru.dfhub' // Укажите ваш groupId
             artifactId = 'dfpaperlib' // Укажите ваш artifactId
-            version = '1.0' // Укажите версию
+            version = '1.1' // Укажите версию
         }
     }
 
