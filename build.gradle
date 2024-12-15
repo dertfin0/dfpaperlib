@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = "ru.dfhub"
+version = "1.0"
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = 'ru.dfhub' // Укажите ваш groupId
+            artifactId = 'dfpaperlib' // Укажите ваш artifactId
+            version = '1.0' // Укажите версию
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/Dertfin3051/dfpaperlib" // Замените OWNER и REPOSITORY на ваши данные
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
