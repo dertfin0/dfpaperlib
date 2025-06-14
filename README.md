@@ -63,4 +63,16 @@ Vanish.unvanish(plugin, Bukkit.getPlayer("dertfin1")) // Показывает в
 Vanish.isVanished(plugin, Bukkit.getPlayer("dertfin1")) // Проверяет, является ли игрок dertfin1 ванишем
 ```
 
-Также DFPaperLib автоматически скрывает сообщения о входе/выходе скрытых игроков и сохраняет статус ваниша между перезаходами игрока и рестартами сервера.
+Также DFPaperLib автоматически скрывает сообщения о входе/выходе скрытых игроков и сохраняет статус ваниша между перезаходами игрока и рестартами сервера.  
+При желании можно отключить стандартные ивенты ваниша, используя `Vanish.Handler.unregister()`
+
+### Кастомный MOTD
+Используя `CustomMotd`, можно опционально менять параметры MOTD
+```java
+CustomMotd.setMotd(Component.text("Powered by DFPaperLib")); // Устанавливает новое описание сервера
+CustomMotd.setMotd(null); // Возвращает стандартный или установленный другим плагином MOTD
+CustomMotd.setMaxPlayers(64);
+CustomMotd.setOnlinePlayers(5);
+CustomMotd.setCustomPlayerList(List.of("Player 1", "Player 2")); // Меняет строки в списке онлайн-игроков
+CustomMotd.setServerIcon(new File("path/to/icon.png"));
+```

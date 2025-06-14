@@ -12,7 +12,8 @@ public class DFPaperLib {
         PLUGIN = plugin;
 
         List.of(
-                Vanish.Handler.INSTANCE = new Vanish.Handler()
+                Vanish.Handler.INSTANCE = new Vanish.Handler(),
+                new CustomMotd.Handler()
         ).forEach(handler -> plugin.getServer().getPluginManager().registerEvents(handler, plugin));
 
         System.out.println("dfpaperlib enabled!");
