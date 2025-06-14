@@ -10,16 +10,16 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            groupId = 'ru.dfhub' // Укажите ваш groupId
-            artifactId = 'dfpaperlib' // Укажите ваш artifactId
-            version = '1.2' // Укажите версию
+            groupId = 'ru.dfhub'
+            artifactId = 'dfpaperlib'
+            version = '1.2'
         }
     }
 
     repositories {
         maven {
             name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/Dertfin3051/dfpaperlib" // Замените OWNER и REPOSITORY на ваши данные
+            url = "https://maven.pkg.github.com/Dertfin3051/dfpaperlib"
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
@@ -30,4 +30,12 @@ publishing {
 
 repositories {
     mavenCentral()
+    maven {
+        name = "papermc"
+        url = uri("https://repo.papermc.io/repository/maven-public/")
+    }
+}
+
+dependencies {
+    compileOnly("io.papermc.paper:paper-api:1.21.5-R0.1-SNAPSHOT")
 }
