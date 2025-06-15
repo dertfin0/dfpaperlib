@@ -5,13 +5,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 /**
- * Класс для работы со всеми игроками в сети
+ * Performing an action on all online players
  */
 public class Global {
 
     /**
-     * Выкинуть всех игроков с сервера
-     * @param reason Причина
+     * Kick all players
+     * @param reason Reason
      */
     public static void kickAll(Component reason) {
         for (Player player : Bukkit.getOnlinePlayers()) {
@@ -20,9 +20,9 @@ public class Global {
     }
 
     /**
-     * Выкинуть игроков, удовлетворяющих условию, с сервера
-     * @param reason Причина
-     * @param filter Boolean-фильтр, принимает в себя игрока
+     * Kick players that pass the filter from the server
+     * @param reason Reason
+     * @param filter Filter (check README.md)
      */
     public static void kick(Component reason, PlayerFilter filter) {
         for (Player player : Bukkit.getOnlinePlayers()) {
@@ -33,8 +33,8 @@ public class Global {
     }
 
     /**
-     * Отправить всем игрокам в сети сообщение
-     * @param message Сообщение
+     * Broadcast message to all players
+     * @param message Message
      */
     public static void broadcastAll(Component message) {
         for (Player player : Bukkit.getOnlinePlayers()) {
@@ -43,9 +43,9 @@ public class Global {
     }
 
     /**
-     * Отправляет сообщение всем игрокам, удовлетворяющим условию
-     * @param message Сообщение
-     * @param filter Boolean-фильтр, принимает в себя игрока
+     * Send message to players that pass the filter
+     * @param message Message
+     * @param filter Filter (check README.md)
      */
     public static void broadcast(Component message, PlayerFilter filter) {
         for (Player player : Bukkit.getOnlinePlayers()) {
@@ -56,9 +56,9 @@ public class Global {
     }
 
     /**
-     * Отправляет сообщение всем игрокам, имеющим право
-     * @param message Сообщение
-     * @param permission Право на получение сообщения
+     * Send message to players that have permission
+     * @param message Message
+     * @param permission Permission
      */
     public static void broadcast(Component message, String permission) {
         broadcast(message, player -> player.hasPermission(permission));

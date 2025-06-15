@@ -12,8 +12,15 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.persistence.PersistentDataType;
 
+/**
+ * Basic functionality for vanishing players
+ */
 public class Vanish {
 
+    /**
+     * Vanish player to all players
+     * @param player Player to vanish
+     */
     public static void vanish(Player player) {
         InitializationException.check();
         player.getPersistentDataContainer().set(getKey(), PersistentDataType.BOOLEAN, true);
@@ -23,6 +30,11 @@ public class Vanish {
         }
     }
 
+    /**
+     * Vanish player to players that pass the filter
+     * @param player Player to vanish
+     * @param filter Filter (check README.md)
+     */
     public static void vanish(Player player, PlayerFilter filter) {
         InitializationException.check();
         player.getPersistentDataContainer().set(getKey(), PersistentDataType.BOOLEAN, true);
@@ -33,6 +45,10 @@ public class Vanish {
         }
     }
 
+    /**
+     * Unvanish player
+     * @param player Player
+     */
     public static void unvanish(Player player) {
         InitializationException.check();
         player.getPersistentDataContainer().remove(getKey());
@@ -41,20 +57,35 @@ public class Vanish {
         }
     }
 
+    /**
+     * Check if player is vanished
+     * @param player Player
+     * @return Is player vanished
+     */
     public static boolean isVanished(Player player) {
         InitializationException.check();
         return player.getPersistentDataContainer().has(getKey());
     }
 
+    /**
+     * Get namespaced key containing vanish status
+     * @return Namespaced key
+     */
     private static NamespacedKey getKey() {
         InitializationException.check();
         return new NamespacedKey(DFPaperLib.PLUGIN, "dfpaperlib.vanish");
     }
 
+    /**
+     * Additional vanish features
+     */
     public static class Handler implements Listener {
 
         protected static Handler INSTANCE;
 
+        /**
+         * Remove some vanish features, like saving vanish on rejoin and restarts and hide join/quit messages
+         */
         public static void unregister() {
             HandlerList.unregisterAll(INSTANCE);
         }

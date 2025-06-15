@@ -11,6 +11,9 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Server MOTD change: description, icon, player list, etc.
+ */
 public class CustomMotd {
 
     private static Component motd = null;
@@ -20,40 +23,40 @@ public class CustomMotd {
     private static CachedServerIcon icon = null;
 
     /**
-     * Установить новое описание сервера
-     * @param motd Новое описание или {@code null} для сброса
+     * Set new server description
+     * @param motd New description or {@code null} to reset
      */
     public static void setMotd(Component motd) {
         CustomMotd.motd = motd;
     }
 
     /**
-     * Установить максимальное количество игроков
-     * @param maxPlayers Новое значение или {@code null} для сброса
+     * Set max-players only in server list
+     * @param maxPlayers New value or {@code null} to reset
      */
     public static void setMaxPlayers(int maxPlayers) {
         CustomMotd.maxPlayers = maxPlayers;
     }
 
     /**
-     * Установить количество онлайн-игроков
-     * @param onlinePlayers Новое значение или {@code null} для сброса
+     * Set online-players value (only in server list)
+     * @param onlinePlayers New value or {@code null} to reset
      */
     public static void setOnlinePlayers(int onlinePlayers) {
         CustomMotd.onlinePlayers = onlinePlayers;
     }
 
     /**
-     * Изменить список игрков при наведении на описание сервера
-     * @param customPlayerList Новый список или {@code null} для сброса
+     * Change online player list / set custom text instead
+     * @param customPlayerList String row list or {@code null} to reset
      */
     public static void setCustomPlayerList(List<String> customPlayerList) {
         CustomMotd.customPlayerList = customPlayerList;
     }
 
     /**
-     * Изменить аватарку сервера
-     * @param file PNG-файл с аватаркой сервера, разрешением не более 64x64 пикселя, или {@code null} для сброса
+     * Change server icon
+     * @param file PNG-file, max resolution - 64x64px, or {@code null} to reset
      */
     public static void setServerIcon(File file) {
         if (file == null) {
