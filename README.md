@@ -77,6 +77,15 @@ CustomMotd.setCustomPlayerList(List.of("Player 1", "Player 2")); // Меняет
 CustomMotd.setServerIcon(new File("path/to/icon.png"));
 ```
 
+Также `CustomMotd` позволяет добавить сразу несколько MOTD, которые будут выбираться случайно при обновлении списка серверов:
+```java
+CustomMotd.setMotds(
+        red("Первый motd"),
+        green("Второй motd"),
+        Component.text("Третий motd")
+);
+```
+
 ### Упрощённое форматирование текста
 Используя `Formatter`, можно быстро оборачивать компоненты в различные теги (цвета, форматирование, действия по клику итд), а также объединять их:
 ```java

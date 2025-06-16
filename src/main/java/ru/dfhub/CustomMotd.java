@@ -9,6 +9,7 @@ import org.bukkit.util.CachedServerIcon;
 
 import java.io.File;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -16,7 +17,7 @@ import java.util.UUID;
  */
 public class CustomMotd {
 
-    private static Component motd = null;
+    private static List<Component> motds = null;
     private static Integer maxPlayers = null;
     private static Integer onlinePlayers = null;
     private static List<String> customPlayerList = null;
@@ -27,7 +28,23 @@ public class CustomMotd {
      * @param motd New description or {@code null} to reset
      */
     public static void setMotd(Component motd) {
-        CustomMotd.motd = motd;
+        CustomMotd.motds = List.of(motd);
+    }
+
+    /**
+     * Set new server descriptions. Randomly selected with server list ping
+     * @param motds List of descriptions or {@code null} to reset
+     */
+    public static void setMotds(List<Component> motds) {
+        CustomMotd.motds = motds;
+    }
+
+    /**
+     * Set new server descriptions. Randomly selected with server list ping
+     * @param motds List of descriptions or {@code null} to reset
+     */
+    public static void setMotds(Component... motds) {
+        CustomMotd.motds = List.of(motds);
     }
 
     /**
@@ -74,8 +91,10 @@ public class CustomMotd {
 
         @EventHandler
         public void onServerListPing(PaperServerListPingEvent e) {
-            if (motd != null) {
-                e.motd(motd);
+            if (motds != null) {
+                int index = Math.round(new Random().nextFloat() * motds.size());
+                if (index >= motds.size()) { index = 1; }
+                e.motd(motds.get(index));
             }
             if (maxPlayers != null) {
                 e.setMaxPlayers(maxPlayers);
