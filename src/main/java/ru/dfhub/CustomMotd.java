@@ -93,7 +93,7 @@ public class CustomMotd {
         public void onServerListPing(PaperServerListPingEvent e) {
             if (motds != null) {
                 int index = Math.round(new Random().nextFloat() * motds.size());
-                if (index >= motds.size()) { index = 1; }
+                if (index >= motds.size()) { index = 0; }
                 e.motd(motds.get(index));
             }
             if (maxPlayers != null) {
