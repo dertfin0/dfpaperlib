@@ -371,6 +371,24 @@ public class Formatter {
     }
 
     /**
+     * Disables italic for component
+     * @param component Component
+     * @return Component without italic
+     */
+    public static Component notItalic(Component component) {
+        return Component.text("<!i>").append(component);
+    }
+
+    /**
+     * Disables italic for text
+     * @param text text
+     * @return Component without italic
+     */
+    public static Component notItalic(String text) {
+        return notItalic(Component.text(text));
+    }
+
+    /**
      * Make component italic
      * @param component Component
      * @return Component wrapped in italic
